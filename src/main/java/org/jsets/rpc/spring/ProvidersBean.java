@@ -77,6 +77,7 @@ public class ProvidersBean implements ApplicationContextAware,InitializingBean, 
 		}
 	}
 
+
 	protected void initializeServer(){
 		SerivceExporter.export();//导出服务
 		ThreadFactory threadFactory = new NamedThreadFactory(serivceConfig.getContextRoot()+"-PROCESS-");
@@ -86,6 +87,7 @@ public class ProvidersBean implements ApplicationContextAware,InitializingBean, 
 		HessionHandler handler = new HessionHandler(serivceConfig,threadPoolExecutor);
 		server = new Server(handler,serivceConfig);
 	}
+	//依赖spring的项目得明确spring bean的初始化机制和顺序  并耦合到项目启动的设置中
 	
 	protected void startServer(){
 		if(server!=null){
